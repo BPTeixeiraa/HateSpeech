@@ -1,0 +1,67 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css"  href="{% static 'css/index.css' %}" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+
+    <title>Detector de discurso de ódio</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                  <img alt="" src="{% static 'img/PUC_LOGO_2.png' %}" class="header-logo">
+                </a>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav">
+                    <li class="nav-item">
+                      <h1 class="header-title fw-bolder">DETECTOR DE DISCURSO DE ÓDIO</h1>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+        </nav>
+
+    <div class="container mt-5">
+        <textarea class="form-control" id="msgc" rows="5" maxlength="280" onkeyup="cnt(event)"></textarea>
+        <p id="valmess2" style="color:#a1a1a1;height: 24px"></p>
+    </div>
+    <div class="container mt-2 container-input">
+        <button type="submit" class="btn btn-outline-primary me-3"><i class="bi bi-upload"></i> TWEET ALEATÓRIO</button>
+        <button type="submit" class="btn btn-secondary ms-3" id="analisar" disabled>ANALISAR</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script>
+        function cnt(event){
+
+             document.getElementById("valmess2").innerHTML=""; // init and clear if b < max    allowed character
+            const a = document.getElementById("msgc").value;
+            const b = a.length;
+            if (b < 1){
+                const element = document.getElementById("analisar");
+                element.disabled = false;
+                element.classList.add("btn-secondary");
+                element.classList.remove("btn-primary")
+            }
+            else if (b > 280) {
+                 document.getElementById("valmess2").innerHTML = "o tamanho máximo de 280 caracteres foi atingido, você digitou  " + b + " caracteres";
+             }else {
+                const element = document.getElementById("analisar");
+                element.disabled = false;
+                element.classList.remove("btn-secondary");
+                element.classList.add("btn-primary")
+                const c = 280 - b;
+                document.getElementById("valmess2").innerHTML = c + " caracteres restantes";
+             }
+
+            }
+    </script>
+  </body>
+</html>

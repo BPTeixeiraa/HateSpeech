@@ -1,0 +1,28 @@
+.header-logo{
+    width: 137px;
+}
+.header-title {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 24px;
+    color: #1c1b1bb8;
+    padding-left: 3rem;
+
+}
+
+.header {
+    position: absolute;
+    width: 1440px;
+    height: 96px;
+    left: 0px;
+    top: 0px;
+    background-color: rgba(248, 248, 248, 1);
+}
+
+.container-input {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
