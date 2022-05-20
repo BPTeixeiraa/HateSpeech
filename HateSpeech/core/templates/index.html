@@ -13,6 +13,7 @@
     <title>Detector de discurso de ódio</title>
   </head>
   <body>
+  {% csrf_token %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
                 <a class="navbar-brand" href="#">
@@ -34,8 +35,14 @@
     </div>
     <div class="container mt-2 container-input">
         <button type="submit" class="btn btn-outline-primary me-3"><i class="bi bi-upload"></i> TWEET ALEATÓRIO</button>
-        <button type="submit" class="btn btn-secondary ms-3" id="analisar" disabled>ANALISAR</button>
+        <button type="submit" class="btn btn-secondary ms-3" id="analisar" disabled onclick="hate_speech_detector();">ANALISAR</button>
     </div>
+
+
+    <div class="container HateSpeech-not-detected fs-3" id="HateSpeech-detected">
+    </div>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
     <script>
@@ -63,5 +70,6 @@
 
             }
     </script>
+   <script src="{% static 'js/index.js' %}"></script>
   </body>
 </html>

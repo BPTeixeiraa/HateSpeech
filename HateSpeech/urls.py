@@ -6,4 +6,5 @@ urlpatterns = [
     #path('admin/', admin.site.urls),
     # padrão
     path('', HateSpeech.core.views.home, name='home'), path('', include('django.contrib.auth.urls')),
+    path('HateSpeech/', HateSpeech.core.views.hate_speech_detector, name='HateSpeech'),
 ]
